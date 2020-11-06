@@ -1,4 +1,4 @@
-package com.raofa.library
+package com.raofa.library.permission
 
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -19,9 +19,11 @@ class PermissionXFragment : Fragment() {
         retainInstance = true
     }
     
-    fun requestNow(permissions: Array<String>, callback: PermissionCallback){
+    fun requestNow( callback: PermissionCallback,vararg permissions: String){
         this.callback = callback
-        requestPermissions(permissions, PERMISSION_CODE)
+        requestPermissions(permissions,
+            PERMISSION_CODE
+        )
     }
 
     override fun onRequestPermissionsResult(

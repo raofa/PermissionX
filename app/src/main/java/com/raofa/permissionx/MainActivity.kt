@@ -4,8 +4,7 @@ import android.Manifest
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.core.app.ActivityCompat
-import com.raofa.library.PermissionX
+import com.raofa.library.permission.PermissionX
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         
-        PermissionX.request(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.ACCESS_COARSE_LOCATION)) { allGranted, deniedList ->
+        PermissionX.request(this, Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.ACCESS_COARSE_LOCATION) { allGranted, deniedList ->
             if(allGranted){
                 Toast.makeText(this,"all permission granted",Toast.LENGTH_SHORT).show()
             }else {
